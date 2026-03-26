@@ -55,9 +55,9 @@ Internet → AWS ALB (auto-provisioned by ALB Controller)
 ## Deploy
 
 ```bash
-kubectl apply -f app1-deployment.yml
-kubectl apply -f app2-deployment.yml
-kubectl apply -f app3-deployment.yml
+kubectl apply -f app1-nginx-deploy-service.yml
+kubectl apply -f app2-nginx-deploy-service.yml
+kubectl apply -f app3-nginx-deploy-service.yml
 kubectl apply -f ingress.yml
 
 # Wait for ADDRESS — that's your ALB DNS
@@ -72,9 +72,9 @@ kubectl get ingress
 # Always delete Ingress FIRST — this tells the controller to delete the ALB
 kubectl delete ingress ingress-cpr-demo
 
-kubectl delete -f app1-deployment.yml
-kubectl delete -f app2-deployment.yml
-kubectl delete -f app3-deployment.yml
+kubectl delete -f app1-nginx-deploy-service.yml
+kubectl delete -f app2-nginx-deploy-service.yml
+kubectl delete -f app3-nginx-deploy-service.yml
 ```
 
 > **Warning:** Always delete the Ingress before deleting the cluster or nodes. If you skip this step, the AWS ALB keeps running and incurs charges even after the cluster is gone.
